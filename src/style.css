@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Lato&family=Nunito:ital,wght@0,200;0,300;0,500;0,600;0,700;1,200;1,300;1,700;1,900&family=Poppins:wght@300&family=Roboto:ital,wght@0,300;0,500;0,700;1,300;1,400;1,500&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 80%;
+  position: relative;
+  margin: 80px auto;
+  background-color: rgb(231, 230, 230);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 10px;
+  border-bottom: 1px solid rgb(81, 80, 80);
+}
+
+.header p {
+  font-size: 16px;
+}
+
+.form {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px;
+  border-bottom: 1px solid rgb(81, 80, 80);
+}
+
+#todo-input {
+  width: 90%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: inherit;
+  border: none;
+  outline: none;
+}
+
+input::placeholder {
+  font-style: italic;
+  font-weight: 500;
+}
+
+.to-do-holder {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  /* align-items: center; */
+  padding: 10px 0;
+}
+
+.todo {
+  display: flex;
+  gap: 10px;
+  padding-top: 13px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid darkslategray;
+}
+
+.Edit,
+.delete {
+  margin-left: 100%;
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+
+.delete {
+  display: none;
+}
+
+i.show {
+  display: flex;
+}
+
+i.hide {
+  display: none;
+}
+
+.list-text {
+  outline: none;
+}
+
+.checkbox {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.checkbox:checked + .list-text {
+  text-decoration: line-through;
+}
+
+.clear-btn {
+  padding: 15px 20px;
+  cursor: pointer;
+  border: none;
+  margin-top: -9px;
+  background-color: rgb(189, 189, 189);
+  font-size: 18px;
+}
