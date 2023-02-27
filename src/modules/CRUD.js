@@ -1,82 +1,80 @@
-import {listContainer, displaytasks} from './display.js'
+import { listContainer, displaytasks, tasks } from './display.js';
 
-let form = document.querySelector('.form')
-let todoInput = document.querySelector('#todo-input')
-export let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-let editTodoId = -1;
-form.addEventListener('submit', (e)=>{
+const form = document.querySelector('.form');
+const todoInput = document.querySelector('#todo-input');
+
+/* eslint-disable no-use-before-define */
+form.addEventListener('submit', (e) => {
   e.preventDefault();
-  saveTodo()
+  saveTodo();
   displaytasks();
-  localStorage.setItem('tasks', JSON.stringify(tasks))
-  
-})
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+});
 
-function saveTodo(todoIndex = null, todoValue = todoInput.value) {
-    if (todoIndex !== null) {
-      tasks[todoIndex].description = todoValue;
-    } else {
-      const index = tasks.length + 1;
-      tasks.push({
-        description: todoValue,
-        completed: false,
-        index: index,
-      });
-    }
-  
-    todoInput.value = '';
-  }
-
-// eventlistener for all TODOS
-listContainer.addEventListener('click',(e)=>{
-    const target = e.target;
-    const parentElement = target.parentNode
-    if(parentElement.className !== 'todo'){
-      return
-    }
-    // todo id
-    const todo = parentElement;
-    const todoId = Number(todo.id)
-    //target action
-    const action = target.dataset.action
-    action === 'check' && checkTodo(todoId);
-    action === 'edit' && editTodo(todoId);
-    action === 'delete' && deleteTodo(todoId)
-  })
-
-  function editTodo(todoId) { 
-    const container = document.getElementById(todoId);
-    const taskDescription = container.querySelector('.list-text');
-    const editIcon = container.querySelector('.Edit');
-    const deleteIcon = container.querySelector('.delete');
-    taskDescription.contentEditable = true;
-    taskDescription.focus();
-    editTodoId = todoId;
-    editIcon.classList.add('hide');
-    deleteIcon.classList.add('show');
-    taskDescription.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        e.preventDefault()
-        saveTodo(todoId, taskDescription.textContent);
-        displaytasks();
-        localStorage.setItem('tasks', JSON.stringify(tasks));
-        taskDescription.contentEditable = false;
-        editIcon.classList.remove('hide');
-        deleteIcon.classList.remove('show');
-        editTodoId = -1;
-      }
+// Save todo function
+const saveTodo = (todoIndex = null, todoValue = todoInput.value) => {
+  if (todoIndex !== null) {
+    tasks[todoIndex].description = todoValue;
+  } else {
+    const index = tasks.length + 1;
+    tasks.push({
+      description: todoValue,
+      completed: false,
+      index,
     });
   }
 
-function deleteTodo(todoId) {
-    tasks = tasks.filter((todo, index)=> index !== todoId);
-    for (let i = 0; i <tasks.length; i++) {
-      tasks[i].index = i + 1
-      
-    }
-    editTodoId = -1;
-    displaytasks();
-    localStorage.setItem('tasks', JSON.stringify(tasks))
-  }
+  todoInput.value = '';
+};
 
-  displaytasks()
+// eventlistener for all Tasks
+listContainer.addEventListener('click', (e) => {
+  const { target } = e;
+  const parentElement = target.parentNode;
+  if (parentElement.className !== 'todo') {
+    return;
+  }
+  // todo id
+  const todo = parentElement;
+  const todoId = Number(todo.id);
+  // target action
+  const actions = target.dataset.action;
+  if (actions === 'edit') {
+    editTodo(todoId);
+  } else if (actions === 'delete') {
+    deleteTodo(todoId);
+  }
+});
+
+const editTodo = (todoId) => {
+  const container = document.getElementById(todoId);
+  const taskDescription = container.querySelector('.list-text');
+  const editIcon = container.querySelector('.Edit');
+  const deleteIcon = container.querySelector('.delete');
+  taskDescription.contentEditable = true;
+  taskDescription.focus();
+  editIcon.classList.add('hide');
+  deleteIcon.classList.add('show');
+  taskDescription.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      saveTodo(todoId - 1, taskDescription.textContent);
+      displaytasks();
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      taskDescription.contentEditable = false;
+      editIcon.classList.remove('hide');
+      deleteIcon.classList.remove('show');
+    }
+  });
+};
+
+function deleteTodo(todoId) {
+  tasks.splice(todoId - 1, 1); // remove one element at index todoId - 1
+  const todoElement = document.getElementById(todoId);
+  todoElement.parentNode.removeChild(todoElement);
+  for (let i = todoId - 1; i < tasks.length; i += 1) {
+    tasks[i].index = i + 1;
+  }
+  displaytasks();
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+}

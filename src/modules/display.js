@@ -1,15 +1,11 @@
-
-import {tasks} from './CRUD.js'
 export const listContainer = document.querySelector('.to-do-holder');
-
-// let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-
-export function displaytasks() {
+export const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+export const displaytasks = () => {
   listContainer.innerHTML = '';
-  tasks.forEach((todo, index) =>{
+  tasks.forEach((todo) => {
     tasks.sort((a, b) => a.index - b.index);
-      listContainer.innerHTML += `
-         <div class="todo" id=${index}>
+    listContainer.innerHTML += `
+         <div class="todo" id=${todo.index}>
           <input type="checkbox" class="checkbox"${todo.completed ? 'checked' : ''}
           data-action="check">
           <p class="list-text" data-action="check">${todo.description}</p>
@@ -17,6 +13,9 @@ export function displaytasks() {
           <i class="fa-solid fa-trash-can delete" data-action="delete"> </i>
           </div>
           `;
-  }); 
-}
-document.addEventListener('DOMContentLoaded', displaytasks);
+  });
+};
+
+displaytasks();
+
+// document.addEventListener('DOMContentLoaded', displaytasks);

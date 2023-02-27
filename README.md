@@ -44,6 +44,8 @@
 <ul>
   <li><a href=" HTML Tutorial (w3schools.com) ">HTML</a></li>    
   <li><a href=" CSS Tutorial (w3schools.com) ">CSS</a></li>
+  <li><a href=" CSS Tutorial (w3schools.com) ">JavaScript</a></li>
+  <li><a href=" CSS Tutorial (w3schools.com) ">Webpack</a></li>
  </ul>
 </details>
 
@@ -56,7 +58,7 @@
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-## 🚀 Live Demo <a name="live-demo"></a>
+## 🚀 Live Demo <a name="Not available yet"></a>
 
 - [Live Demo Link](not-available-yet)
 
@@ -113,9 +115,10 @@ npx stylelint "**/*.{css,scss}"     to check errors for CSS file.
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **[Web Accessibility]**
+- [ ] **[Delete all completed tasks]**
  
-- [ ] **[Implement Forms Validation]**
+- [ ] **[check if tasks completed]**
+- [ ] **[drag and drop tasks]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
  
