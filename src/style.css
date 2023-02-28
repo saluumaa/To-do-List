@@ -35,9 +35,8 @@ body {
 }
 
 .arrow-img {
-  height: 20px;
-  width: 20px;
-  color: rgba(0, 0, 0, 0.4);
+  font-size: 30px;
+  color: rgba(0, 0, 0, 0.7);
   cursor: pointer;
 }
 
@@ -66,8 +65,6 @@ input::placeholder {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  /* align-items: center; */
   padding: 10px 0;
 }
 
@@ -112,7 +109,7 @@ i.hide {
 
 .checkbox:checked + .list-text {
   text-decoration: line-through;
-  color: darkslategrey;
+  color: rebeccapurple;
   font-style: italic;
   font-size: 17px;
   font-weight: 500;
