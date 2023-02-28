@@ -58,9 +58,9 @@
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-## 🚀 Live Demo <a name="Not available yet"></a>
+## 🚀 Live Demo <a name="Live-Demo"></a>
 
-- [Live Demo Link](not-available-yet)
+- [Live Demo Link](https://saluumaa.github.io/To-do-List/dist/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
