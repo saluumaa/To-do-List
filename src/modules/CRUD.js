@@ -2,10 +2,16 @@ import { listContainer, displaytasks, tasks } from './display.js';
 
 const form = document.querySelector('.form');
 const todoInput = document.querySelector('#todo-input');
-
+const arrow = document.querySelector('.arrow-img');
 /* eslint-disable no-use-before-define */
 form.addEventListener('submit', (e) => {
   e.preventDefault();
+  saveTodo();
+  displaytasks();
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+});
+
+arrow.addEventListener('click', () => {
   saveTodo();
   displaytasks();
   localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -43,6 +49,8 @@ listContainer.addEventListener('click', (e) => {
     editTodo(todoId);
   } else if (actions === 'delete') {
     deleteTodo(todoId);
+  } else if (actions === 'check') {
+    checkTodo(todoId);
   }
 });
 
@@ -72,9 +80,31 @@ function deleteTodo(todoId) {
   tasks.splice(todoId - 1, 1); // remove one element at index todoId - 1
   const todoElement = document.getElementById(todoId);
   todoElement.parentNode.removeChild(todoElement);
-  for (let i = todoId - 1; i < tasks.length; i += 1) {
+  for (let i = 0; i < tasks.length; i += 1) {
     tasks[i].index = i + 1;
   }
   displaytasks();
   localStorage.setItem('tasks', JSON.stringify(tasks));
 }
+
+function checkTodo(todoId) {
+  tasks.forEach((todo, index) => {
+    if (index === todoId - 1) {
+      todo.completed = !todo.completed;
+    }
+  });
+  displaytasks();
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+const btnClear = document.querySelector('.clear-btn');
+btnClear.addEventListener('click', () => {
+  const incompleteTasks = tasks.filter((todo) => !todo.completed);
+  tasks.length = 0; // clear the original tasks array
+  tasks.push(...incompleteTasks); // add the incomplete tasks back to the original array
+  for (let i = 0; i < tasks.length; i += 1) {
+    tasks[i].index = i + 1;
+  }
+  displaytasks();
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+});
