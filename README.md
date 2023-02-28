@@ -30,7 +30,7 @@
 
 # 📖 [To-Do-list] <a name="about-project"></a>
 
->To do list application helps you to manage your daily task effectively and reserve your schedule and daily plan.
+>To do list application helps you to manage your daily task effectively and let you reserve your schedule and daily plan.
 
 **[To-do-list-project]** 
 
@@ -115,9 +115,6 @@ npx stylelint "**/*.{css,scss}"     to check errors for CSS file.
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **[Delete all completed tasks]**
- 
-- [ ] **[check if tasks completed]**
 - [ ] **[drag and drop tasks]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

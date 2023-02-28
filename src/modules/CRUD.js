@@ -76,7 +76,7 @@ const editTodo = (todoId) => {
   });
 };
 
-function deleteTodo(todoId) {
+const deleteTodo = (todoId) => {
   tasks.splice(todoId - 1, 1); // remove one element at index todoId - 1
   const todoElement = document.getElementById(todoId);
   todoElement.parentNode.removeChild(todoElement);
@@ -85,7 +85,7 @@ function deleteTodo(todoId) {
   }
   displaytasks();
   localStorage.setItem('tasks', JSON.stringify(tasks));
-}
+};
 
 function checkTodo(todoId) {
   tasks.forEach((todo, index) => {
