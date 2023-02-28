@@ -8,7 +8,7 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .container {
@@ -26,18 +26,26 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 10px 10px;
-  border-bottom: 1px solid rgb(81, 80, 80);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.4);
 }
 
 .header p {
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.arrow-img {
+  height: 20px;
+  width: 20px;
+  color: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
 }
 
 .form {
   display: flex;
   justify-content: space-between;
   padding: 10px 10px;
-  border-bottom: 1px solid rgb(81, 80, 80);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
 }
 
 #todo-input {
@@ -67,8 +75,9 @@ input::placeholder {
   display: flex;
   gap: 10px;
   padding-top: 13px;
+  font-weight: 400;
   padding-bottom: 7px;
-  border-bottom: 1px solid darkslategray;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
 }
 
 .Edit,
@@ -77,6 +86,7 @@ input::placeholder {
   position: absolute;
   right: 10px;
   cursor: pointer;
+  font-size: 24px;
 }
 
 .delete {
@@ -102,6 +112,10 @@ i.hide {
 
 .checkbox:checked + .list-text {
   text-decoration: line-through;
+  color: darkslategrey;
+  font-style: italic;
+  font-size: 17px;
+  font-weight: 500;
 }
 
 .clear-btn {
@@ -110,5 +124,5 @@ i.hide {
   border: none;
   margin-top: -9px;
   background-color: rgb(189, 189, 189);
-  font-size: 18px;
+  font-size: 20px;
 }
